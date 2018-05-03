@@ -1,28 +1,11 @@
-This project is created from a GitLab [Project Template](https://docs.gitlab.com/ce/gitlab-basics/create-project.html)
+### Ruby on Rails template project
 
-Additions and changes to the project can be proposed [on the original project](https://gitlab.com/gitlab-org/project-templates/rails)
+This project is based on a GitLab [Project Template](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
 
-# README
+Improvements can be proposed in the [original project](https://gitlab.com/gitlab-org/project-templates/rails).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### CI/CD with Auto DevOps
 
-Things you may want to cover:
+This template is compatible with [Auto DevOps](https://docs.gitlab.com/ee/topics/autodevops/).
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If Auto DevOps is not already enabled for this project, you can [turn it on](https://docs.gitlab.com/ee/topics/autodevops/#enabling-auto-devops) in the project settings.
