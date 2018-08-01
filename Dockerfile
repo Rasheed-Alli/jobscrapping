@@ -4,9 +4,6 @@ FROM ruby:2.5-alpine
 # Or delete entirely if not needed.
 RUN apk --no-cache add nodejs postgresql-client tzdata
 
-# Install build dependencies - required for gems with native dependencies
-RUN apk add --no-cache --virtual build-deps build-base postgresql-dev
-
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
@@ -14,8 +11,10 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY Gemfile Gemfile.lock /usr/src/app/
-RUN bundle install
-RUN apk del build-deps
+# Install build dependencies - required for gems with native dependencies
+RUN apk add --no-cache --virtual build-deps build-base postgresql-dev && \
+  bundle install && \
+  apk del build-deps
 
 COPY . /usr/src/app
 
