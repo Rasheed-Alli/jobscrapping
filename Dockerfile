@@ -19,5 +19,6 @@ RUN apk add --no-cache --virtual build-deps build-base postgresql-dev && \
 COPY . /usr/src/app
 
 # For Rails
-EXPOSE 3000
-CMD ["bundle", "exec", "rails", "server"]
+ENV PORT 5000
+EXPOSE $PORT
+CMD ["sh", "-c", "bundle exec rails server -p ${PORT}"]
