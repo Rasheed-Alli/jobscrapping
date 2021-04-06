@@ -1,3 +1,4 @@
+
 image:
   file: .gitpod.Dockerfile
 
@@ -15,3 +16,7 @@ tasks:
       rake db:create
     command: >
       rails server
+
+vscode:
+  extensions:
+    - rebornix.ruby
