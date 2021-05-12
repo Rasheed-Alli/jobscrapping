@@ -1,0 +1,17 @@
+<div class="row" style="margin-botton: -1%"> 
+        <div class="col s9">
+        <p style="text-transform: uppercase; font-weight: 800"><%= best_in_place @leadership_experience, :position , :place_holder => "<span> Your Most Significant Campus Leadership Role</span>" %></p>
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @leadership_experience, :start_date , :place_holder => "<span id='empty'> Starting Date - Ending Date</span>" %></p>
+        </div>
+    </div>
+    
+    <div class="row"> 
+    <p><%= best_in_place @leadership_experience, :organization , :place_holder => "<span > Leadership Role </span>" %></p></ul>
+    
+    <p id="leadership_experience_detail1"> &bull; <%= best_in_place @leadership_experience, :detail1 , id: @leadership_experience.id , :data => {:append => "leadership_experience_detail1", :field => "detail1"} ,:place_holder => "<span id='empty'> Your largest achievement in your role (quantify this however you can) </span>" %></p>
+    <p id="leadership_experience_detail1"> &bull;  <%= best_in_place @leadership_experience, :detail2 , id: @leadership_experience.id , :data => {:append => "leadership_experience_detail2", :field => "detail2"}, :place_holder => "<span id='empty'> Evidence of your ability to work in a team (or lead a team!)</span>" %></p>
+    <p id="leadership_experience_detail1"> &bull; <%= best_in_place @leadership_experience, :detail3 , id: @leadership_experience.id , :data => {:append => "leadership_experience_detail3", :field => "detail3"}, :place_holder => "<span id='empty'> Any tangible projects or publications that demonstrate your work</span>" %></p>
+    </div>

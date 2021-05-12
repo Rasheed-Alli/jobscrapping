@@ -1,0 +1,300 @@
+<head>
+    <%= stylesheet_link_tag'application', :media => "all" %>
+    <%= render "resumes/design" %> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<script>
+      $('.best_in_place').best_in_place();
+      
+      $('body').spellAsYouType();
+      $('#myTextArea').spellCheckInDialog();
+      
+ 
+
+</script>
+
+
+<script>
+      $(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
+
+  </script>
+
+
+<body>
+
+<meta name="pdfkit-margin_top" content="0.00in"/>
+<meta name="pdfkit-margin_left" content="0.00in"/>
+<meta name="pdfkit-margin_right" content="0.00in"/>
+<meta name="pdfkit-margin_bottom" content="0.0in"/>
+
+<div class="indigo lighten-5 template_div" style="font-family: Questrial !important; position: fixed; top: 0; height: 10% ; width: 100%; left: 0; z-index: 4">
+<div class="row">
+    <div class="col s3"><%= form_for @resume do |f| %>
+                <%= f.label "Have a resume already? Upload it here" %>
+                    <%= f.file_field :attachment %>
+                    <%= f.submit %>
+                <% end %> 
+                </div>
+    <div id="design_buttons" style="padding: 0 20em !important;font-weight: bolder; font-family: Questrial !important;">
+
+    <%= link_to "<div class='btn blue white-text' style='margin-left: 20%; margin-top: 1%'>Classic</div>".html_safe,  change_template_path(id: @resume.id, template_name: "Classic" ), style: "font-family: Questrial !important;" %> 
+    
+    <%= link_to "<div class='btn blue white-text' style='; margin-top: 1%'>Skills First</div>".html_safe,  change_template_path(id: @resume.id, template_name: "SkillsFirst" ), style: "font-family: Questrial !important;" %> 
+    
+    <%= link_to  "<div class='btn blue white-text' style='margin-top: 1%'>Centered</div>".html_safe, change_template_path(id: @resume.id, template_name: "MAP" ), style: "font-family: Questrial !important;"%>
+
+    <%= link_to  "<div class='btn blue white-text' style='margin-top: 1%'>Distinguisehd</div>".html_safe, change_template_path(id: @resume.id, template_name: "MAP2" ), style: "font-family: Questrial !important;"%>
+    
+    
+    <%= link_to "View as PDF", resume_path(@resume ,:format => "pdf"), class: "btn  cyan-text white pdf_btn" , style: "top: .8em ;border-radius: 20px;font-family: Questrial !important; font-weight: bolder; z-index: 3; position:fixed; right: 0%;"%> 
+
+    <%= link_to "Download PDF",  asset_path("/resumes/#{@resume.id}.pdf") ,download: "Resume_#{@resume.name.gsub(/\s+/, "")}",  class: "btn  cyan-text white pdf_btn", style: "top: .8em !important;border-radius: 20px;font-family: Questrial !important; font-weight: bolder; z-index: 3; position:fixed; right: 10%; " %>                                   
+    
+    </div>
+</div>
+<style>
+  a:hover {
+    background-color: inherit;
+  }
+</style>
+
+</div>
+<% if user_signed_in? %>
+
+<%= render 'resumes/templates/job_description' ,class: "indigo lighten-5"%> 
+
+
+<% if @resume.jobdescription %>
+<%= render 'resumes/templates/dynamic_review' %> 
+<% end %>
+
+    <%= form_for @typo ,:html => {:id => "form_typos"}, :remote => true do |f| %> 
+        <%= f.hidden_field :experience_id , id: "typo_experience_id"  %>
+        <%= f.hidden_field :resume_id , value: @resume.id , id: "typo_resume_id"  %>
+         <%= f.hidden_field :append_to , id: "typo_append_to"  %>
+        <%= f.hidden_field :field , id: "typo_field"  %>
+    <% end %> 
+    
+    <% if @resume.jobdescription %>
+        <%= form_for @review ,:html => {:id => "form_inline_review"}, :remote => true do |f| %> 
+            <%= f.hidden_field :jobdescription , value: @resume.jobdescription,  style: "background-color:white" %><br />
+            <%= f.hidden_field :attachment, value: root_url + request.env['PATH_INFO'][1..-1] + ".pdf" %> 
+            <%= f.hidden_field :source , value: "Resume Builder" %> 
+            <%= f.hidden_field :resume_id , value: @resume.id %> 
+        <% end %> 
+    <% end %>
+    
+    
+    <%= form_for resume_path(@resume) , :html => {:method => 'GET', :id => "form_replace"} do  %> 
+        <%= hidden_field_tag "resume[replace_experience]" ,nil, id: "replace_experience" %> 
+        <%= hidden_field_tag  "resume[replace_field]",nil , id: "replace_field" %>
+        <%= hidden_field_tag  "resume[replace_text]",nil , id: "replace_text" %> 
+
+    <% end %> 
+    <style>
+        select {display: inline;}
+    </style>
+    <% if user_signed_in? and current_user.role =="account_admin" and @resume.approval == nil%>
+    
+        Approve this resume? <i class="green-text fa fa-plus"></i>
+            <%= form_for @resume , :html => { :id => "approve_form" } do |f| %>
+                <%= f.select :approval , [["Yes",true],["No", false]]%> 
+                <%= f.submit%>
+            <% end %>
+            
+       
+
+
+        
+    <% end %>
+    
+  
+    <% if @resume.attachment.url %>
+        <iframe style="width: 100%; height: 100%" src= "<%= @resume.attachment.url%>"></iframe>
+    <% else %>
+        <div class="resume_body" style="margin-top: 5%">
+            <%= render "resumes/templates/#{@resume.template_name}" %> 
+        <div id = "empty", style="height: 20em !important"></div>
+        </div>
+    <% end %>
+<% else%> 
+<h5 style="font-family: Montserrat; padding: 15%" class: "center"> You do not have access to this resume.</h5>
+<% end %>
+
+    <div class="footer indigo lighten-5" style="overflow:scroll" > 
+        <div class="expand fa fa-expand  fa-2x"></div>
+        <div class="close_footer fa fa-times  fa-2x"></div>
+    <div style="postion: relative; top: -10%; padding: 0 10em">
+       
+
+        <%= form_tag resume_path(@resume), :method => :get, :id => 'change-font-form', :remote => true do %>
+          <%=  hidden_field_tag :font , params[:font], id: "featured_field" %>
+        <% end %>
+        
+         <%= form_tag resume_path(@resume), :method => :get, :id => 'hidden-experience-form' , :remote => true do %>
+              <%=  hidden_field_tag :hide , params[:hide], id: "hide_experience_field" %>
+              <%=  hidden_field_tag :hidden_name , params[:hidden_name], id: "hidden_experience_field" %>
+
+        <% end %>
+       
+        <div class="row font_div" style="font-family: Questrial !important">
+            
+            <div class="cyan-text col s3 font_header"> CHANGE FONT </div>
+            <div class="font_button btn white cyan-text col s3" style="border-radius: 20px; padding: .2%" id="Arial">Arial</div>
+            <div class="font_button btn white cyan-text col s3" style="border-radius: 20px; padding: .2%%" id="Montserrat">Montserrat</div>
+            <div class="font_button btn white cyan-text col s3" style="border-radius: 20px; padding: .2%%"id="times_new_romanregular">Times New Roman</div>
+
+           
+        </div>
+       
+        <div class="row review_div" style="font-family: Questrial !important">
+        
+            <div class="cyan-text col s3 font_header"> AUTO REVIEW YOUR RESUME </div>
+            <div class= "col s7">
+             <%= form_for @review do |f| %>
+                  Copy the job description : <%= f.text_area :jobdescription , style: "background-color:white" ,required: true %><br />
+                  <%= f.hidden_field :attachment, value: root_url + request.env['PATH_INFO'][1..-1] + ".pdf" %> 
+                <%= f.hidden_field :source , value: "Resume Builder" %> 
+                <%= f.hidden_field :resume_id , value: @resume.id %> 
+                          <%= submit_tag "Submit for Review", class: "btn white cyan-text" %> 
+
+                <% end %>
+            
+            </div>
+
+        </div>
+    
+    
+    
+    
+    
+        
+        <br> 
+        
+
+        
+        
+        
+    </div>
+        
+    </div>
+
+</body>
+
+<script> 
+    $(".expand").click(function(){
+        $(this).hide();
+        $(".footer").css("height", "55%")
+        $(".close_footer").show();
+    });
+    
+    $(".close_footer").click(function(){
+        $(this).hide();
+        $(".footer").css("height", "15%")
+        $(".expand").show();
+    });
+    
+   
+ $(".font_button").click(function(){
+      $(this).css("border","1px solid yellow");
+      $(this).siblings().css("border","none");
+
+         input = $(this).attr("id").toString() ;
+         
+         $('.resume_body,.resume_body p,.resume_body h6, .resume_bodyh5,.best_in_place, .resume_body span, .resume_name').css("font-family",input);
+         
+         $('.pdf_btn').css("font-family","Questrial !important");
+         $('#design_buttons').css("font-family","Questrial !important")
+         console.log(input)
+         
+        $("#featured_field").val(input);
+        
+        
+        $('#change-font-form').submit();
+     });
+
+</script>
+
+<script>
+        $(document).ready(function(){
+    $('.toggle').hide();
+});
+
+$('.hide_icon').click(function(){
+    $(this).hide();
+    $(this).siblings(".dynamic_experience").hide();
+    $(this).siblings(".dynamic_experience").addClass("no_render");
+
+    $(this).siblings('.show_icon').show();
+    
+    input = $(this).attr("id");
+    console.log(input)
+    console.log("checking jquery is working")
+
+         
+        $("#hide_experience_field").val(true);
+        $("#hidden_experience_field").val(input);
+
+        
+        $('#hidden-experience-form').submit();
+});
+
+$('.show_icon').click(function(){
+    $(this).hide();
+    $(this).siblings(".dynamic_experience").show();
+    $(this).siblings(".dynamic_experience").removeClass("no_render");
+
+    $(this).siblings('.hide_icon').show();
+
+    
+    input = $(this).attr("id");
+     
+         
+        $("#hide_experience_field").val(false);
+        $("#hidden_experience_field").val(input);
+
+        
+        $('#hidden-experience-form').submit();
+
+});
+
+$('.hide_icon').mouseenter(function(){
+ 
+    $(this).parent().css("background-color","#e0f7fa")
+});
+
+$('.hide_icon').mouseout(function(){
+ 
+    $(this).parent().css("background-color","white")
+});
+</script>
+   
+<!--
+ <script> 
+ $('.best_in_place').bind("ajax:success", function () {
+     experience_id = $(this).attr("id");
+     append = $(this).data('append');
+     original = $(this).val();
+     field = $(this).data('field');
+        console.log(field);
+
+     $("#typo_experience_id").val(experience_id);
+     $("#typo_append_to").val(append);
+     $("#typo_field").val(field);
+     $("#form_typos").submit();
+     $("#form_inline_review").submit();
+      });
+      
+</script>

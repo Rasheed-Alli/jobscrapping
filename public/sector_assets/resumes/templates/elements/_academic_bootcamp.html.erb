@@ -1,0 +1,40 @@
+ <div class="row"> 
+        <div class="col s9">
+        <p id="academic_experience_organization" id="organization" style="text-transform: uppercase; font-weight: 800"><%= best_in_place @academic_experience, :organization ,id: @academic_experience.id, :data => {:append => "academic_experience_organization", :field => "organization"}, 
+        :value => "The Knowledge House", :place_holder => "<span id='empty'> The Knowledge House </span>" %></p>
+      
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @academic_experience, :start_date , :place_holder => "<span id='empty'> Expected Graduation & Year </span>" %></p>
+
+
+        </div>
+    </div>
+    <div id="academic_experience" >
+        <p id="academic_experience_position"><%= best_in_place @academic_experience, :position ,id: @academic_experience.id, :value => "Software Engineering Fellow", :data => {:append => "academic_experience_position", :field => "position"}, :place_holder => "<span id='empty'> Software Engineering Fellow </span>" %></p>
+    </div>
+    
+
+<% if @course %> 
+    <p id="academic_experience_detail1"> &bull; <%= best_in_place @academic_experience, :detail1 , id: @academic_experience.id, :data => {:append => "academic_experience_detail1", :field => "detail1"}, 
+    :value => "#{ @course.detail1 }", :place_holder => "#{ @course.detail1 }" %></p>
+<% else %> 
+    <p id="academic_experience_detail1"> &bull; <%= best_in_place @academic_experience, :detail1 , id: @academic_experience.id, :data => {:append => "academic_experience_detail1", :field => "detail1"}, 
+    :value => "Participation in 108 hours of technical instruction in Branding, Social
+        Media Marketing, and KPI analytics in preparation for internships &
+        apprenticeships ", :place_holder => "Participation in 108 hours of technical instruction in Branding, Social
+        Media Marketing, and KPI analytics in preparation for internships &
+        apprenticeships "%></p>
+<% end %> 
+
+<% if @course %>
+    <p id="academic_experience_detail2"> &bull; <%= best_in_place @academic_experience, :detail2 , id: @academic_experience.id, :data => {:append => "academic_experience_detail2", :field => "detail2"}, 
+    :value => "#{@course.detail2}", :place_holder => "<span id='empty'> #{@course.detail2}</span>" %></p>
+
+<% else %> 
+    <p id="academic_experience_detail2"> &bull; <%= best_in_place @academic_experience, :detail2 , id: @academic_experience.id, :data => {:append => "academic_experience_detail2", :field => "detail2"}, 
+        :value => "Enhance professional development, career competencies, and work
+    readiness by engaging in 25 hours of workforce training.", :place_holder => "<span id='empty'> Enhance professional development, career competencies, and work
+    readiness by engaging in 25 hours of workforce training.</span>" %></p>
+<% end %> 

@@ -1,0 +1,38 @@
+<% if @resume.jobdescription %> 
+<div class="job_description indigo lighten-5">
+    <br>
+    <h2>Job Description</h2>
+   <p class="description_text" style="font-family: Questrial !important"> <%= highlight(@resume.jobdescription, @highlight_keywords) %> </p>
+
+</div>
+
+
+<% end %> 
+<style>
+    .description_text {
+        font-family: Montserrat !important;
+    }
+   
+    .job_description {
+        position:fixed;
+        overflow: scroll;
+        left: 0;
+        top: 0;
+        width: 22%;
+        height: 85%;
+        background-color: white;
+        padding: 2%;
+        overflow: scroll;
+    }
+    .job_description p {
+        font-family: Questrial !important;
+        color: grey !important;
+    }
+      .header,h2 {
+        margin:  7% 5% 5% 5%;
+        line-height: .7em;
+        font-weight: bolder;
+        font-size: 2em;
+    }
+    
+</style>

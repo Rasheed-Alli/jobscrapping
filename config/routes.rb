@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  root "jobs#index"
 
-  root 'welcome#index'
+  get "/jobs", to: "jobs#index"
+  get "/jobs/:id", to: "jobs#show"
 end

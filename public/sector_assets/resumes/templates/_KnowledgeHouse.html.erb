@@ -1,0 +1,87 @@
+<div class="header_div row"> 
+<div class="col s8">
+    <h5 style="text-align: left; font-weight: bolder; color: #2079c7 !important; font-size: 50px"> <%= best_in_place @resume, :name ,class:"resume_name", style:"color: #2079c7 !important"%></h5>
+</div>
+<div class="col s3">
+    <div class="row contact_row" style="font-weight: bolder; "> 
+       <br>
+       <%= render 'resumes/templates/elements/header_stacked' %> 
+        
+    </div>
+</div>
+</div>
+
+<style>
+    .stack_info {
+        font-size: 23px !important;
+    }
+</style>
+<br> 
+<div class = "row">
+    <div class ="col s8">
+        <div class="work_section"> 
+            <h6 class="education_header">EXPERIENCE </h6>
+                <%= render 'resumes/templates/elements/work_bootcamp' %> 
+                
+        </div>
+        
+        <div class="education_section"> 
+            <h6 class="education_header">EDUCATION</h6> 
+               <%= render 'resumes/templates/elements/academic_bootcamp' %> 
+        </div>
+    </div>
+
+    <div class="col s3">
+        <div class="education_section"> 
+            <h6 class="education_header">SKILLS</h6> 
+            
+                 <%= render 'resumes/templates/elements/skills_university' %> 
+        </div>
+    </div>
+   
+</div>
+
+
+<style> 
+    .toggle {
+        display: none;
+    }
+    
+    .education_header {
+        border-bottom: none !important;
+        color: #2079c7 !important;
+        font-size: 30px;
+    }
+    
+    body,p,h6,.resume_name,span {
+        font-family: <%= @resume.font || "Montserrat" %> ;
+    }
+    p {
+        font-size: 15px !important;
+        margin-bottom: 7px;
+        color: grey !important;
+    }
+    #position {
+        font-style: italic !important;
+    }
+    .academic_position :{
+        color:black ;
+    }
+</style>
+
+<script> 
+ $('.best_in_place').bind("ajax:success", function () {
+     experience_id = $(this).attr("id");
+     append = $(this).data('append');
+     original = $(this).val();
+     field = $(this).data('field');
+        console.log(field);
+
+     $("#typo_experience_id").val(experience_id);
+     $("#typo_append_to").val(append);
+     $("#typo_field").val(field);
+     $("#form_typos").submit();
+     
+      });
+      
+</script>

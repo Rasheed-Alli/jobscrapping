@@ -1,0 +1,18 @@
+
+
+  <% if @skill_1 %> 
+    <p id="skill1"> &bull; <%= best_in_place @skill_1, :name, id: @skill_1.id , :data => {:append => "skill_1", :field => "name"}, :place_holder => "<span id='empty'> Enter Your Technical Skills</span> " %></p>
+ <% end %> 
+ 
+   <% if @skill_2 %> 
+    <p id="skill2"> &bull; <%= best_in_place @skill_2, :name, id: @skill_2.id , :data => {:append => "skill_2", :field => "name"}, :place_holder => "<span id='empty'> Enter Your Technical Skills</span> " %></p>
+   <% end %> 
+   
+   <% if @skill_3 %> 
+    <p id="skill3"> &bull; <%= best_in_place @skill_3, :name, id: @skill_3.id , :data => {:append => "skill_3", :field => "name"}, :place_holder => "<span id='empty'> Enter Your Technical Skills</span> " %></p>
+   <% end %> 
+   
+  
+
+ 
+  

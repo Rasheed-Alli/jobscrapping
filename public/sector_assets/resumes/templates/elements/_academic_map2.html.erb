@@ -1,0 +1,18 @@
+<div class="row"> 
+        <div class="col s9">
+        <p id="academic_experience_organization" id="organization" style="text-transform: uppercase; font-weight: 800"><%= best_in_place @academic_experience, :organization ,id: @academic_experience.id, :data => {:append => "academic_experience_organization", :field => "organization"}, :place_holder => "<span> Morehouse College </span>" %> -
+       <span style="font-weight: 300"><%= best_in_place @academic_experience, :location ,id: @academic_experience.id, :data => {:append => "academic_experience_location", :field => "location"}, :place_holder => "<span> Atlanta, Georgia </span>" %></span>  </p>
+
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800; text-transform: none "><%= best_in_place @academic_experience, :detail2 , :place_holder => "<span id='empty'> GPA: 3.43/4.0</span>" %></p>
+        <p style=""><%= best_in_place @academic_experience, :start_date , :place_holder => "<span id='empty'> Expected Graduation Date: May 2015</span>" %></p>
+
+
+        </div>
+    </div>
+    <div id="academic_experience"  style="margin-top: -6%">
+        <p id="academic_experience_position"><%= best_in_place @academic_experience, :position , id: @academic_experience.id,  :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) },:data => {:append => "academic_experience_position", :field => "position"}, :place_holder => "<span id='empty'> B.A. in Business Administration (Concentration in Marketing), Minor in Spanish </span>" %></p>
+    </div>
+    <p id="academic_experience_detail1"><%= best_in_place @academic_experience, :detail1 , id: @academic_experience.id, :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) }, :data => {:append => "academic_experience_detail1", :field => "detail1"}, :place_holder => "<span id='empty'> Academic Scholarship, Alpha Lambda Delta Nat’l Honor Society, Nat’l Society of Collegiate Scholars, Honor Roll, Honors Program</span>" %></p>

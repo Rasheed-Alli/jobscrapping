@@ -1,0 +1,73 @@
+<div class="header_div"> 
+
+<h5 class="center" style="font-size: 40px; "> <%= best_in_place @resume, :name %></h5>
+
+    <div class="row contact_row"> 
+       
+       <%= render 'resumes/templates/elements/header_center' %> 
+        
+    </div>
+</div>
+<br> 
+
+<div class="skills_section"> 
+<h6 class="education_header">SKILLS</h6> 
+    
+         <%= render 'resumes/templates/elements/skills_university' %> 
+
+</div>
+<div class="leadership_section"> 
+<h6 class="education_header">PROJECTS</h6> 
+        <%= render 'resumes/templates/elements/leadership_university' %> 
+
+</div>
+
+
+<br>
+<div class="work_section"> 
+<h6 class="education_header">EXPERIENCE </h6>
+  <%= render 'resumes/templates/elements/work_university' %> 
+  
+
+    
+    
+   
+    
+</div>
+
+
+
+<div class="education_section"> 
+<h6 class="education_header">EDUCATION</h6> 
+   <%= render 'resumes/templates/elements/academic_university' %> 
+
+
+
+
+</div>
+
+<script>
+
+</script>
+
+<style> 
+    .toggle {
+        display: none;
+    }
+    p{
+        font-size: 9px ;
+    }
+    h6 {
+        font-size: 13px ;
+    }
+</style>
+
+<style type="text/css" media="print">
+    p{
+        font-size: 14px;
+    }
+    h6 {
+        font-size: 18px;
+    }
+</style>
+

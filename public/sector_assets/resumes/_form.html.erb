@@ -1,0 +1,86 @@
+<%= form_for(resume) do |f| %>
+  <% if resume.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resume.errors.count, "error") %> prohibited this resume from being saved:</h2>
+
+      <ul>
+      <% resume.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :category %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :languages %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :activities %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :interests %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :name , value: current_user.name %>
+    
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :default, :value => "False" %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :public %>
+  </div>
+
+  <div class="field">
+    <%= f.label "What would you like to save this as?" %>
+    <% if !params[:title] %>
+      <%= f.text_field :version_name, value: "Resume_CompanyName" %>
+    <% else %> 
+      <%= f.text_field :version_name, value: params[:title].remove(" ") + "@" + params[:company].remove(" ") %>
+    <% end %> 
+  </div>
+
+  <div class="field">
+
+   <%= f.label :template_name %>
+    <%= f.select :template_name , ["Classic","STEM","BlueBlock","KnowledgeHouse"] %>
+    <% if params[:description] %>
+      <%= f.hidden_field :jobdescription , value: params[:description]%> 
+      <%= f.hidden_field :job_title , value: params[:title]%> 
+    <% else %> 
+      <%= f.text_area :jobdescription , placeholder: "Copy and paste the job description you are writing this resume for" %> 
+    <% end %> 
+
+
+
+  </div>
+
+  
+  
+  
+    
+  <div class="actions">
+    <%= submit_tag "New Resume", class: "btn btn-large white cyan-text" %>
+  </div>
+<% end %>

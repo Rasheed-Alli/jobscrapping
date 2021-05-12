@@ -1,0 +1,22 @@
+ <div class="row"> 
+        <div class="col s4">
+            <p id="academic_experience_organization" id="organization" style="text-transform: uppercase; font-weight: 800"><%= best_in_place @academic_experience, :organization ,id: @academic_experience.id, :data => {:append => "academic_experience_organization", :field => "organization"}, :place_holder => "<span>Hampton University </span>" %></p>
+            <p id="academic_experience_location"><%= best_in_place @academic_experience, :location , id: @academic_experience.id,:data => {:append => "academic_experience_location", :field => "location"}, :place_holder => "<span id='empty'> Hampton, VA</span>" %></p>
+
+        </div>  
+        <div class="col s5">
+            <p id="academic_experience_position"><%= best_in_place @academic_experience, :position , id: @academic_experience.id,  :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) },:data => {:append => "academic_experience_position", :field => "position"}, :place_holder => "<span id='empty'> Bachelor's of Science in Finance </span>" %></p>
+            <p id="academic_experience_detail1"><%= best_in_place @academic_experience, :detail1 , id: @academic_experience.id, :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) }, :data => {:append => "academic_experience_detail1", :field => "detail1"}, :place_holder => "<span id='empty'> Minor: Leadership Studies </span>" %></p>
+            <p id="academic_experience_detail2"><%= best_in_place @academic_experience, :detail2 , id: @academic_experience.id, :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) }, :data => {:append => "academic_experience_detail2", :field => "detail2"}, :place_holder => "<span id='empty'> William R. Harvey Leadership Institute</span>" %></p>
+            <p id="academic_experience_detail3"><%= best_in_place @academic_experience, :detail3 , id: @academic_experience.id, :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) }, :data => {:append => "academic_experience_detail3", :field => "detail3"}, :place_holder => "<span id='empty'> GPA: 3.47 </span>" %></p>
+
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @academic_experience, :start_date , :place_holder => "<span id='empty'> May 2019 </span>" %></p>
+
+
+        </div>
+    </div>
+    <div id="academic_experience" >
+    </div>

@@ -1,0 +1,9 @@
+<h5 style="position:fixed; top:2%; left: 80%"><%= link_to 'Logout', destroy_user_session_path, :method => :get , class: "black-text" ,style: "font-size: 20px; margin-left: 20%" %> </h5>
+
+<div class="auth_box">
+    <h2>New Resume</h2>
+    
+    <%= render 'form', resume: @resume %>
+    
+    <%= link_to 'Back', root_path %>
+</div>

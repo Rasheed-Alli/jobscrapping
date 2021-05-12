@@ -1,0 +1,52 @@
+<div class="row" style="margin-botton: -1%"> 
+        <div class="col s9">
+        <p style="text-transform: uppercase; font-weight: 800"><%= best_in_place @leadership_experience, :position , :place_holder => "<span> William R. Harvey Leadership Institute</span>" %></p>
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @leadership_experience, :start_date , :place_holder => "<span id='empty'> Starting Date - Ending Date</span>" %></p>
+        </div>
+    </div>
+    
+    <div class="row"> 
+    <p><%= best_in_place @leadership_experience, :organization , :place_holder => "<span > Treasurer on the Advisory Council Board </span>" %></p></ul>
+    
+    <p id="leadership_experience_detail1"> &bull; <%= best_in_place @leadership_experience, :detail1 , id: @leadership_experience.id , :data => {:append => "leadership_experience_detail1", :field => "detail1"} ,:place_holder => "<span id='empty'> Selected for induction as a Leadership Fellow based on GPA, involvement on campus, and community service </span>" %></p>
+    <p id="leadership_experience_detail2"> &bull;  <%= best_in_place @leadership_experience, :detail2 , id: @leadership_experience.id , :data => {:append => "leadership_experience_detail2", :field => "detail2"}, :place_holder => "<span id='empty'> Catalyzed leadership skills to prepare students for corporate and post-graduate environment</span>" %></p>
+    </div>
+    
+<div class="row" style="margin-botton: -1%"> 
+        <div class="col s9">
+        <p style="text-transform: uppercase; font-weight: 800"><%= best_in_place @leadership2_experience, :position , :place_holder => "<span>National Black MBA Association</span>" %></p>
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @leadership2_experience, :start_date , :place_holder => "<span id='empty'> Starting Date - Ending Date</span>" %></p>
+        </div>
+    </div>
+    
+    <div class="row"> 
+    <p><%= best_in_place @leadership2_experience, :organization , :place_holder => "<span > Member </span>" %></p></ul>
+    
+    <p id="leadership2_experience_detail1"> &bull; <%= best_in_place @leadership2_experience, :detail1 , id: @leadership2_experience.id , :data => {:append => "leadership2_experience_detail1", :field => "detail1"} ,:place_holder => "<span id='empty'> Orchestrated financial literacy initiatives around the Hampton Roads area </span>" %></p>
+    <p id="leadership2_experience_detail2"> &bull;  <%= best_in_place @leadership2_experience, :detail2 , id: @leadership2_experience.id , :data => {:append => "leadership2_experience_detail2", :field => "detail2"}, :place_holder => "<span id='empty'> Participated in workshops on building a marketable resume and interview etiquette</span>" %></p>
+    </div>
+    
+<% if @leadership3_experience %> 
+<div class="row" style="margin-botton: -1%"> 
+        <div class="col s9">
+        <p style="text-transform: uppercase; font-weight: 800"><%= best_in_place @leadership3_experience, :position , :place_holder => "<span>Student Athlete Alliance</span>" %></p>
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @leadership3_experience, :start_date , :place_holder => "<span id='empty'> Starting Date - Ending Date</span>" %></p>
+        </div>
+    </div>
+    
+    <div class="row"> 
+    <p><%= best_in_place @leadership3_experience, :organization , :place_holder => "<span > Member </span>" %></p></ul>
+    
+    <p id="leadership3_experience_detail1"> &bull; <%= best_in_place @leadership3_experience, :detail1 , id: @leadership3_experience.id , :data => {:append => "leadership3_experience_detail1", :field => "detail1"} ,:place_holder => "<span id='empty'> Orchestrated financial literacy initiatives around the Hampton Roads area </span>" %></p>
+    <p id="leadership3_experience_detail2"> &bull;  <%= best_in_place @leadership3_experience, :detail2 , id: @leadership3_experience.id , :data => {:append => "leadership3_experience_detail2", :field => "detail2"}, :place_holder => "<span id='empty'> Participated in workshops on building a marketable resume and interview etiquette</span>" %></p>
+    </div>
+<% end %> 

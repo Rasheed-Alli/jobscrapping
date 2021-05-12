@@ -1,0 +1,59 @@
+<div id="review_section" class="indigo lighten-5">
+    <h2 id="review_append" >Your Resume Review</h2>
+    <div class="review_append"></div>
+    <div class="static_review">
+
+    <div class="btn blue white-text"><a href="<%= resume_path(@resume)%>"> Review My Resume</a> </div>
+    
+    <% if @keywords.present? %>
+    <% @highlight_keywords.each do |word| %> 
+       <p class="cyan-text common_words" style="font-family: Questrial !important" > <%= word %> 
+       <%if @reader.downcase.include? word %> <i class="fa fa-check"></i> <% else %>
+                                                    <i class="fa fa-times"></i>                        
+                                                <% end %> </p>
+        <%  @experiences.each_with_index do |e, index| %>
+            <% if e.organization != nil and e.organization.downcase.include? word %> 
+            <li> <%=e.resume_field + " " + (index + 1).to_s %>Experience  position has this word </li>
+            <% end %> 
+            
+            
+            <% if e.detail1 != nil and e.detail1.downcase.include? word %> 
+             <li> <%=e.resume_field + " " + (index + 1).to_s %> Experience  bullet 1 has this word </li>
+             <% end %> 
+             
+             <% if e.detail2 != nil and e.detail2.downcase.include? word %> 
+            <li> <%=e.resume_field + " " + (index + 1).to_s %>E xperience  bullet 2 has this word </li>
+            <% end %> 
+            
+            <% if e.detail3 != nil and e.detail3.downcase.include? word %> 
+            <li> <%=e.resume_field + " " + (index + 1).to_s %> Experience  bullet 3 has this word </li>
+            <% end %>
+          
+
+        <% end %> 
+     <% end %> 
+     <% end %> 
+     </div>
+</div>
+
+<style>
+    li {
+        font-family: Questrial !important;
+        color: gray;
+    }
+    #review_section{
+        padding: 0% 1%;
+        position: fixed;
+        left: 82%;
+        top:5%;
+        height: 100%;
+        z-index: 10%;
+        background-color:white;
+        overflow: scroll;
+    }
+    #review_append{
+        margin-top: 20%;
+        margin-bottom: 1em !important;
+    }
+</style>
+

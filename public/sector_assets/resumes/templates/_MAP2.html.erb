@@ -1,0 +1,63 @@
+<div class="header_div"> 
+
+<h5 class="center" style="font-size: 40px; "> <%= best_in_place @resume, :name %></h5>
+
+    <div class="row contact_row" style="margin-top: -2%"> 
+       
+       <%= render 'resumes/templates/elements/header_map' %> 
+        
+    </div>
+</div>
+<br> 
+
+<div class="education_section" style="margin-top: -5%"> 
+<h6 class="education_header" style="border-top: 1px solid black; border-bottom: 1px solid black; padding: 1% 0%">EDUCATION</h6> 
+   <%= render 'resumes/templates/elements/academic_map2' %> 
+
+
+<br>
+<div class="work_section"> 
+<h6 class="education_header" style="border-top: 1px solid black; border-bottom: 1px solid black; padding: 1% 0%">EXPERIENCE </h6>
+  <%= render 'resumes/templates/elements/work_map2' %> 
+  
+
+    
+    
+   
+    
+</div>
+
+<div class="leadership_section" > 
+    <h6 class="education_header" style="border-top: 1px solid black;border-bottom: 1px solid black;padding: 1% 0%">LEADERSHIP EXPERIENCE AND ACTIVITIES</h6> 
+        <%= render 'resumes/templates/elements/leadership_map' %> 
+
+</div>
+
+</div>
+
+
+<script>
+
+</script>
+
+<style> 
+    .toggle {
+        display: none;
+    }
+    p{
+        font-size: 10px ;
+    }
+    h6 {
+        font-size: 14px ;
+    }
+</style>
+
+<style type="text/css" media="print">
+    p{
+        font-size: 14px;
+    }
+    h6 {
+        font-size: 18px;
+    }
+ 
+</style>

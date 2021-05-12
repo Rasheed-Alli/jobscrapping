@@ -1,0 +1,172 @@
+<div class="blue_block corner_panel" >
+   
+        <h5 style="position: relative; font-weight:lighter !important;text-align: left; top: 2em;margin-left: .8em; font-weight: normal; color: black; font-size: 50px"> <%= best_in_place @resume, :name ,class:"resume_name"%></h5>
+        <div class="icons"> 
+            <i class="fa fa-linkedin white-text" style="border: solid white 2px; border-radius: 100% ; padding: 2%"></i> <%= best_in_place @resume, :social_linkedin, :place_holder => "<span id='empty'> linkedin.com/in/hello </span>" , :value => "linkedin.com/in/" %> <br>
+            <i class="fa fa-github white-text" style="border: solid white 2px; border-radius: 100% ; padding: 2%"></i> <%= best_in_place @resume, :social_github, :place_holder => "<span id='empty'> github.com/your_url </span>" , :value => "github.com/" %><br>
+            <i class="fa fa-twitter white-text" style="border: solid white 2px; border-radius: 100% ; padding: 2%"></i> <%= best_in_place @resume, :social_twitter, :place_holder => "<span id='empty'> twitter.com/in/hello </span>" , :value => "twitter.com/" %><br>
+    
+        </div>
+</div>
+<div class="blue_block top_right" style=" ">
+    <h6 style="font-size: 20px !important;font-weight: bolder; position: relative; margin: 5% 0 0 5%; top: 9em">PROFESSIONAL SUMMARY</h6>
+    <br> 
+    <p  class="resume_summary"><%= best_in_place @resume, :summary, :place_holder => "<span id='empty'> Enter a summary of your skills here (optional)" %></p>
+</div>
+<div class="blue_block left_panel" style=" ">
+    <div class="left_panel_text">
+        <h5 style="font-weight: bold"> EDUCATION </h5>
+
+        <%= render "resumes/templates/elements/academic_bootcamp" %> 
+        
+        <h5 style="font-weight: bold"> SKILLS </h5>
+        <%= render "resumes/templates/elements/skills_university" %> 
+    </div>
+</div>
+<div class="main_panel"> 
+    <h5 style="font-weight: bold"> WORK HISTORY </h5>
+    <%= render "resumes/templates/elements/work_bootcamp" %> 
+</div>
+
+<style>
+    .stack_info {
+        font-size: 23px !important;
+    }
+</style>
+<br> 
+
+
+<style> 
+   
+    .icons {
+        position: relative;
+        top: 25%;
+        left: 10%;
+    }
+    i {
+        margin: 2%;
+    }
+    .resume_summary {
+        margin-top: 12em !important;
+        margin-left: 2em;
+        z-index: 4;
+    }
+ 
+    
+    p,h5, h6 {
+        color: black ;
+    }
+    .corner_panel {
+        position:absolute;
+        z-index: 0; 
+        top: 0; 
+     
+        left: 10%; 
+        height: 28em; 
+        width: 25%; 
+        background-color: #8096C8 !important;
+    }
+    
+    .top_right {
+        position: absolute;
+        z-index: 0; 
+        top: 0; 
+       
+        left: 35% !important;
+      
+        height: 28em; 
+        width: 40em; 
+        background-color: #E9ECF4 !important;
+    }
+    
+    .left_panel {
+        position: absolute;
+        z-index: -5 !important; 
+        top: 28em; 
+        
+        left: 10%; 
+
+        height: 47em; 
+        width: 25%; 
+        background-color: #E9ECF4 !important;
+        padding: 4% 2% 2% 2%;
+    
+    }
+        .main_panel {
+        position: absolute;
+        z-index: 0; 
+        top: 28em; 
+        
+     
+        left: 35%; 
+
+        height: 50em; 
+        width: 55%; 
+        padding: 2%;
+    }
+    
+    .left_panel_text {
+        position:relative;
+        margin: 5%;
+    }
+    
+    #empty{
+        color: blue;
+    }
+    
+</style>
+ 
+<style type="text/css" media="print">
+.corner_panel , .left_panel{
+     left: 0 !important;;
+     width: 23.5em;
+}
+.left_panel{
+    height: 1280px;
+}
+.top_right {
+    left: 23.5em !important;
+    width: 60em;
+}
+.main_panel {
+    left: 23.5em !important; ;
+}
+ .resume_summary {
+        margin-left: 2.5em;
+        
+    }
+</style>
+
+<script>
+    $(document).ready(function(){
+    $('.toggle').hide();
+});
+
+</script>
+
+<style> 
+    .toggle {
+        display: none;
+    }
+    
+    .education_header {
+        border-bottom: none !important;
+        color: black;
+        font-size: 30px;
+    }
+    
+    body,p,h2, h6,.resume_name,span {
+        font-family: <%= @resume.font || "Montserrat" %>  ;
+    }
+    p {
+        font-size: 15px !important;
+        margin-bottom: 7px;
+        color: black;
+    }
+    #position {
+    }
+    .academic_position :{
+        color:black ;
+    }
+</style>
+

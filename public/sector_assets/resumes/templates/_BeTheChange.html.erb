@@ -1,0 +1,131 @@
+<%= link_to "Save as PDF", resume_path(@resume ,:format => "pdf"), class: "btn btn-large cyan white-text" , style: "position:fixed; right: 10%"%> 
+<div class="header_div"> 
+
+<h5 class="center" style="font-size: 30px"> <%= best_in_place @resume, :name %></h5>
+
+    <div class="row contact_row"> 
+       
+        <div class="col s4 center"> 
+            <p><%= best_in_place @rfesume, :email, :place_holder => "<span id='empty'> Enter Your Email </span>" %> </p>  
+        </div>
+        <div class="col s4 center"> 
+            <p><%= best_in_place @resume, :phone, :place_holder => "<span id='empty'> Enter Your Phone Number </span>" %> </p>  
+        </div>
+         <div class="col s4 center"> 
+            <p><%= best_in_place @resume, :linkedin, :place_holder => "<span id='empty'> Enter Your LinkedIn Profile </span>" %>  </p>
+        </div>
+    </div>
+</div>
+<br> 
+
+<div class="education_section"> 
+<h6 class="education_header">EDUCATION</h6> 
+    <div class="row"> 
+        <div class="col s9">
+        <p id="academic_position" id="position" style="text-transform: uppercase; font-weight: 800"><%= best_in_place @academic_experience, :position , :place_holder => "<span id='empty'> The School You Are Attending </span>" %></p>
+      
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @academic_experience, :start_date , :place_holder => "<span id='empty'> Expected Graduation & Year </span>" %></p>
+
+
+        </div>
+    </div>
+    <p><%= best_in_place @academic_experience, :organization , :place_holder => "<span id='empty'> The Degree & Major You're Getting (ie. Bachelor's of Science in Political Science </span>" %></p>
+
+    <p><%= best_in_place @academic_experience, :detail1 , :place_holder => "<span id='empty'> Relevant Courses You Are Taking .ie Political Theory, Economics </span>" %></p>
+
+</div>
+
+<div class="work_section"> 
+<h6 class="education_header">EXPERIENCE</h6> 
+   <div class="row" style="margin-botton: -1%"> 
+        <div class="col s9">
+        <p class="academic_position" id="position" style="text-transform: uppercase; font-weight: 800"><%= best_in_place @work_experience, :position , :place_holder => "<span id='empty'> Your Most Recent Opportunity </span>" %></p>
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @work_experience, :start_date , :place_holder => "<span id='empty'> Starting Month & Year - Present </span>" %></p>
+        </div>
+    </div>
+    
+    <div class="row"> 
+    <p><%= best_in_place @work_experience, :organization , :place_holder => " XYZ Intern" %></p></ul>
+    
+    <p> &bull; <%= best_in_place @work_experience, :detail1 , :place_holder => "<span id='empty'> Your largest achievement in your role (quantify this however you can)</span> " %></p>
+    <p> &bull;  <%= best_in_place @work_experience, :detail2 , :place_holder => "<span id='empty'> Evidence of your ability to work in a team (or lead a team!)</span>" %></p>
+    <p> &bull; <%= best_in_place @work_experience, :detail3 , :place_holder => "<span id='empty'> Any tangible projects or publications that demonstrate your work</span>" %></p>
+    </div>
+    
+    <br> 
+
+    <div class="row" style="margin-botton: -1%"> 
+        <div class="col s9">
+        <p class="academic_position" id="position" style="text-transform: uppercase; font-weight: 800"><%= best_in_place @work2_experience, :position , :place_holder => "<span id='empty'> Your Next Most Recent Opportunity </span>" %></p>
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @work2_experience, :start_date , :place_holder => "<span id='empty'> Starting Month & Year - Ending Month & Year </span>" %></p>
+        </div>
+    </div>
+    
+    <div class="row"> 
+    <p class="academic_position" ><%= best_in_place @work2_experience, :organization , :place_holder => "<span id='empty'> Marketing Intern </span>" %></p></ul>
+    
+    <p> &bull; <%= best_in_place @work2_experience, :detail1 , :place_holder => "<span id='empty'> Your largest achievement in your role (quantify this however you can) </span>" %></p>
+    <p> &bull;  <%= best_in_place @work2_experience, :detail2 , :place_holder => "<span id='empty'> Evidence of your ability to work in a team (or lead a team!) </span>" %></p>
+    <p> &bull; <%= best_in_place @work2_experience, :detail3 , :place_holder => "<span id='empty'> Any tangible projects or publications that demonstrate your work </span>" %></p>
+    </div>
+    
+        <br> 
+
+    <div class="row" style="margin-botton: -1%"> 
+        <div class="col s9">
+        <p class="academic_position" id="position" style="text-transform: uppercase; font-weight: 800"><%= best_in_place @work3_experience, :position , :place_holder => "<span id='empty'> Your Next Most Recent Opportunity </span>" %></p>
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @work3_experience, :start_date , :place_holder => "<span id='empty'> Starting Month & Year - Ending Month & Year </span>" %></p>
+        </div>
+    </div>
+    
+    <div class="row" > 
+    <p><%= best_in_place @work3_experience, :organization , :place_holder => "<span id='empty'> Marketing Intern </span>" %></p></ul>
+    
+    <p> &bull; <%= best_in_place @work3_experience, :detail1 , :place_holder => "<span id='empty'> Your largest achievement in your role (quantify this however you can)</span>" %></p>
+    <p> &bull;  <%= best_in_place @work3_experience, :detail2 , :place_holder => "<span id='empty'> Evidence of your ability to work in a team (or lead a team!)</span>" %></p>
+    <p> &bull; <%= best_in_place @work3_experience, :detail3 , :place_holder => "<span id='empty'> Any tangible projects or publications that demonstrate your work</span>" %></p>
+    </div>
+    
+</div>
+
+<div class="leadership_section"> 
+<h6 class="education_header">LEADERSHIP EXPERIENCE</h6> 
+    <div class="row" style="margin-botton: -1%"> 
+        <div class="col s9">
+        <p style="text-transform: uppercase; font-weight: 800"><%= best_in_place @leadership_experience, :position , :place_holder => "<span id='empty'> Your Most Significant Campus Leadership Role</span>" %></p>
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @leadership_experience, :start_date , :place_holder => "<span id='empty'> Starting Month & Year - Ending Month & Year</span>" %></p>
+        </div>
+    </div>
+    
+    <div class="row"> 
+    <p><%= best_in_place @leadership_experience, :organization , :place_holder => "<span id='empty'> Student Organization President </span>" %></p></ul>
+    
+    <p> &bull; <%= best_in_place @leadership_experience, :detail1 , :place_holder => "<span id='empty'> Your largest achievement in your role (quantify this however you can) </span>" %></p>
+    <p> &bull;  <%= best_in_place @leadership_experience, :detail2 , :place_holder => "<span id='empty'> Evidence of your ability to work in a team (or lead a team!)</span>" %></p>
+    <p> &bull; <%= best_in_place @leadership_experience, :detail3 , :place_holder => "<span id='empty'> Any tangible projects or publications that demonstrate your work</span>" %></p>
+    </div>
+</div>
+
+<div class="skills_section"> 
+<h6 class="education_header">Skills</h6> 
+    
+    <p> <span style="font-weight:800"> LANGUAGE SKILLS </span><%= best_in_place @resume, :languages, :place_holder => "<span id='empty'> First Language (Conversational), Second Language (Fluent)</span>" %></p>
+    <p> <span style="font-weight:800"> COMPUTER SKILLS </span><%= best_in_place @resume, :activities, :place_holder => "<span id='empty'> Technical Skills (Not Incuding Microsoft Word)" %></p>
+   
+</div>
+</div>

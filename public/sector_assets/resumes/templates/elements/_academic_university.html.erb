@@ -1,0 +1,16 @@
+ <div class="row"> 
+        <div class="col s9">
+        <p id="academic_experience_organization" id="organization" style="text-transform: uppercase; font-weight: 800"><%= best_in_place @academic_experience, :organization ,id: @academic_experience.id, :data => {:append => "academic_experience_organization", :field => "organization"}, :place_holder => "<span> The School You Are Attending </span>" %></p>
+      
+        </div>
+        
+        <div class="col s3">
+        <p style="font-weight: 800"><%= best_in_place @academic_experience, :start_date , :place_holder => "<span id='empty'> Expected Graduation & Year </span>" %></p>
+
+
+        </div>
+    </div>
+    <div id="academic_experience" >
+        <p id="academic_experience_position"><%= best_in_place @academic_experience, :position , id: @academic_experience.id,  :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) },:data => {:append => "academic_experience_position", :field => "position"}, :place_holder => "<span id='empty'> The Degree & Major You're Getting (ie. Bachelor's of Science in Political Science </span>" %></p>
+    </div>
+    <p id="academic_experience_detail1"><%= best_in_place @academic_experience, :detail1 , id: @academic_experience.id, :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) }, :data => {:append => "academic_experience_detail1", :field => "detail1"}, :place_holder => "<span id='empty'> Relevant Courses You Are Taking .ie Political Theory, Economics </span>" %></p>

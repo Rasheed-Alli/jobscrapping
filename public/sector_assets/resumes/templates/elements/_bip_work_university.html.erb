@@ -1,0 +1,157 @@
+  <div "experience_div" >
+    <% if @work_experience.is_hidden != true %> 
+        <div class="hide_icon cyan-text fa fa-minus-circle " id="<%=@work_experience.id%>"></div>
+        <div class="show_icon toggle cyan-text fa fa-plus-circle " id="<%=@work_experience.id%>"></div>
+
+        <div class ="dynamic_experience">
+    <% elsif @work_experience.is_hidden == true %> 
+        <div class="show_icon cyan-text fa fa-plus-circle " id="<%=@work_experience.id%>"></div>
+        <div class="hide_icon toggle cyan-text fa fa-minus-circle " id="<%=@work_experience.id%>"></div>
+
+        <div class ="dynamic_experience" style="display:none">
+      <% end %> 
+           <div class="row" > 
+                <div class="col s9">
+                <p class="academic_position" id="position" style="text-transform: uppercase; font-weight: 800; margin-left: -2% !important"><%= best_in_place @work_experience, :organization , :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) }, :place_holder => "<span> Your Most Relevant Opportunity </span>" %></p>
+                </div>
+                
+                <div class="col s3">
+                <p style="font-weight: 800"><%= best_in_place @work_experience, :start_date , :place_holder => "<span id='empty'> Starting Date - Present </span>" %></p>
+                </div>
+            </div>
+        
+            
+            <div class="row" > 
+            <p><%= best_in_place @work_experience, :position , :place_holder => "Job Role" %></p></ul>
+            
+            <% if @work_experience.detail1 != nil %> 
+               <p id = "work_experience_detail1" class="static"> &bull;<%= highlight_with_quant(@work_experience.detail1, @highlight_keywords) %></p>
+            <% else %> 
+                <p class="pop"><%= form_for @work_experience do |f| %> <%= f.text_field :detail1, :data => {:append => "work_experience_detail1", :field => "detail1"}%> <% end %></p>
+            <% end %> 
+                <p class="pop"><%= form_for update_bullet_path, :html => {:id =>"bullet_form"} ,:data => {:append => "work_experience_detail1", :field => "detail1"} , remote: true do |f| %> 
+                                    <%= f.text_field :detail1, id: @work_experience.id, value: @work_experience.detail1, class: "pop_hide awesomplete" , data: {:list => @recommendations}%> 
+                        
+                               <% end %>
+                </p>
+
+            <script>
+              $(document).ready(function(){
+                  $(".pop_hide").hide();
+              });
+              
+                $(".static").mouseover(function(){
+                    $(this).css("text-decoration","underline");
+                });
+                $(".static").mouseout(function(){
+                    $(this).css("text-decoration","none");
+                });
+                
+                 $(".static").click(function(){
+
+                    $(this).css("display","none");
+                    $(".pop_hide").show();
+
+                });
+
+            </script>
+            <p id="work_experience_detail1"> &bull; <%= best_in_place @work_experience, :detail1, id: @work_experience.id ,  :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) }, :data => {:append => "work_experience_detail1", :field => "detail1"}, :place_holder => "<span id='empty'> Your largest achievement in your role (quantify this however you can)</span> " %></p>
+            <p id="work_experience_detail2"> &bull;  <%= best_in_place @work_experience, :detail2 , id: @work_experience.id , :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) },:data => {:append => "work_experience_detail2", :field => "detail2"}, :place_holder => "<span id='empty'> Evidence of your ability to work in a team (or lead a team!)</span>" %></p>
+            <p id="work_experience_detail3"> &bull; <%= best_in_place @work_experience, :detail3 ,id: @work_experience.id , :display_with => lambda { |v| highlight_with_quant(v, @highlight_keywords ) }, :data => {:append => "work_experience_detail3", :field => "detail3"},:place_holder => "<span id='empty'> Any tangible projects or publications that demonstrate your work</span>" %></p>
+            </div>
+            
+        </div>
+    </div> 
+
+    <br>
+  <div "experience_div" >
+   <% if @work2_experience.is_hidden != true %> 
+        <div class="hide_icon cyan-text fa fa-minus-circle " id="<%=@work2_experience.id%>"></div>
+        <div class="show_icon toggle cyan-text fa fa-plus-circle " id="<%=@work2_experience.id%>"></div>
+
+        <div class ="dynamic_experience">
+    <% elsif @work2_experience.is_hidden == true %> 
+        <div class="show_icon cyan-text fa fa-plus-circle " id="<%=@work2_experience.id%>"></div>
+        <div class="hide_icon toggle cyan-text fa fa-minus-circle " id="<%=@work2_experience.id%>"></div>
+
+        <div class ="dynamic_experience" style="display:none">
+      <% end %> 
+            <div class="row" style="margin-botton: -1%"> 
+                <div class="col s9">
+                <p class="academic_position" id="position" style="text-transform: uppercase; font-weight: 800;margin-left: -2% !important"><%= best_in_place @work2_experience, :organization , :place_holder => "<span > Your Next Most Recent Opportunity </span>" %></p>
+                </div>
+                
+                <div class="col s3">
+                <p style="font-weight: 800"><%= best_in_place @work2_experience, :start_date , :place_holder => "<span id='empty'> Starting Date - Ending Date </span>" %></p>
+                </div>
+            </div>
+            
+            <div class="row"> 
+                <p class="academic_position" ><%= best_in_place @work2_experience, :position , :place_holder => "<span> Job Role </span>" %></p></ul>
+                
+                <p id="work2_experience_detail1"> &bull; <%= best_in_place @work2_experience, :detail1 , id: @work2_experience.id , :data => {:append => "work2_experience_detail1", :field => "detail1"}, :place_holder => "<span id='empty'> Your largest achievement in your role (quantify this however you can) </span>" %></p>
+                <p id="work2_experience_detail2"> &bull;  <%= best_in_place @work2_experience, :detail2 ,id: @work2_experience.id , :data => {:append => "work2_experience_detail2", :field => "detail2"}, :place_holder => "<span id='empty'> Evidence of your ability to work in a team (or lead a team!) </span>" %></p>
+                <p id="work2_experience_detail3"> &bull; <%= best_in_place @work2_experience, :detail3 ,id: @work2_experience.id , :data => {:append => "work2_experience_detail3", :field => "detail3"}, :place_holder => "<span id='empty'> Any tangible projects or publications that demonstrate your work </span>" %></p>
+            </div>
+        </div>
+    </div> 
+    
+    <br>
+     <div "experience_div" >
+    <% if @work3_experience.is_hidden != true %> 
+    
+        <div class="hide_icon cyan-text fa fa-minus-circle " id="<%=@work3_experience.id%>"></div>
+        <div class="show_icon toggle cyan-text fa fa-plus-circle " id="<%=@work3_experience.id%>"></div>
+
+        <div class ="dynamic_experience">
+    <% elsif @work3_experience.is_hidden == true %> 
+        <div class="show_icon cyan-text fa fa-plus-circle " id="<%=@work3_experience.id%>"></div>
+        <div class="hide_icon toggle cyan-text fa fa-minus-circle " id="<%=@work3_experience.id%>"></div>
+
+        <div class ="dynamic_experience" style="display:none">
+      <% end %> 
+            <div class="row" style="margin-botton: -2%"> 
+                <div class="col s9">
+                <p class="academic_position" id="position" style="text-transform: uppercase; font-weight: 800; margin-left: -2% !important"><%= best_in_place @work3_experience, :organization , :place_holder => "<span> Your Next Most Recent Opportunity </span>" %></p>
+                </div>
+                
+                <div class="col s3">
+                <p style="font-weight: 800"><%= best_in_place @work3_experience, :start_date , :place_holder => "<span id='empty'> Starting Date - Ending Date </span>" %></p>
+                </div>
+            </div>
+            
+            <div class="row"> 
+                <p><%= best_in_place @work3_experience, :position , :place_holder => "<span> Job Role </span>",:class =>"academic_experience" %></p>
+                
+                <p id="work3_experience_detail1"> &bull; <%= best_in_place @work3_experience, :detail1 ,  id: @work3_experience.id , :data => {:append => "work3_experience_detail1", :field => "detail1"}, :place_holder => "<span id='empty'> Your largest achievement in your role (quantify this however you can)</span>" %></p>
+                <p id="work3_experience_detail2"> &bull;  <%= best_in_place @work3_experience, :detail2 , id: @work3_experience.id , :data => {:append => "work3_experience_detail2", :field => "detail2"},:place_holder => "<span id='empty'> Evidence of your ability to work in a team (or lead a team!)</span>" %></p>
+                <p id="work3_experience_detail3"> &bull; <%= best_in_place @work3_experience, :detail3 , id: @work3_experience.id , :data => {:append => "work3_experience_detail3", :field => "detail3"}, :place_holder => "<span id='empty'> Any tangible projects or publications that demonstrate your work</span>" %></p>
+            </div>
+        </div>
+    </div> 
+    
+<script>
+
+    $('#bullet_form').bind("ajax:success", function () {
+        $(this).hide();
+        
+     experience_id = $(this).attr("id");
+     append = $(this).data('append');
+     original = $(this).val();
+     field = $(this).data('field');
+        console.log(field);
+
+     $("#typo_experience_id").val(experience_id);
+     $("#typo_append_to").val(append);
+     $("#typo_field").val(field);
+     $("#form_typos").submit();
+     $("#form_inline_review").submit();
+      });
+</script>    
+
+<style>
+    .awesomplete {
+        width: 80%;
+        margin: 0% 5% 0% 0%;
+    }
+</style>
